@@ -1,4 +1,3 @@
 export const Button = ({ title, onClick, disabled }) => {
-    return (<button onClick={() => onClick()} disabled={disabled}>{title}</button>)
+    return (<button disabled={disabled} onClick={() => onClick()}>{title}</button>)
  };
- 

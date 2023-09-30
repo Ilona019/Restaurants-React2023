@@ -1,25 +1,19 @@
-
-import React from 'react';
-import {restaurants} from '../../constants/mock';
-import { Tab } from '../../component/Tab/component';
-import { Restaurant } from '../../component/Restaurant/component';
-import { useState } from 'react';
+import {React, useState} from "react";
+import { restaurants } from "../../constants/mock";
+import { RestaurantTabs } from "../../component/RestaurantTabs/component";
+import { Restaurant } from "../../component/Restaurant/component";
 
 export const MainPage = () => {
-    if (!restaurants?.length) {
-        return null;
-    }
+  const [activeTab, setActiveTab] = useState(0);
 
-    const [activeTab, setActiveTab] = useState(0);
-    const onClickTab = (indexTab) => {
-        setActiveTab(indexTab);
-    }
-    return (
-    <span>
-        {restaurants?.length > 0 && restaurants.map(({ name, id }, index) => (
-            <Tab indexTab={index} name={name} key={id} onClick={onClickTab}/>
-        ))}
-        <Restaurant data={restaurants[activeTab]}/>
-    </span>
-    );
-}
+  if (!restaurants?.length) {
+    return null;
+  }
+
+  return (
+    <div>
+      <RestaurantTabs restaurants={restaurants} onTabSelect={setActiveTab} />
+      <Restaurant restaurant={restaurants[activeTab]} />
+    </div>
+  );
+};
