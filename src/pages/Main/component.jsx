@@ -1,7 +1,9 @@
-import {React, useState} from "react";
-import { restaurants } from "../../constants/mock";
-import { RestaurantTabs } from "../../component/RestaurantTabs/component";
-import { Restaurant } from "../../component/Restaurant/component";
+import {React, useState} from 'react';
+import { restaurants } from '../../constants/mock';
+import { Restaurant } from '../../component/Restaurant/component';
+import { Header } from '../../component/Header/component';
+import { Footer } from '../../component/Footer/component';
+import styles from './styles.module.css';
 
 export const MainPage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -11,9 +13,10 @@ export const MainPage = () => {
   }
 
   return (
-    <div>
-      <RestaurantTabs restaurants={restaurants} onTabSelect={setActiveTab} />
+    <div className={styles.root}>
+      <Header restaurants={restaurants} activeTab={activeTab} onTabSelect={setActiveTab} />
       <Restaurant restaurant={restaurants[activeTab]} />
+      <Footer />
     </div>
   );
 };

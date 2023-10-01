@@ -7,12 +7,14 @@ export const Dish = ({ dish }) => {
         return null;
     }
 
+    const dash = String.fromCharCode(8212);
+    const space = String.fromCharCode(160);
     return (
         <>
-            <b>{dish.name}</b>-
-            <Button title="-" onClick={() => setAmount(amount - 1)} disabled={amount === 0}/>
-            {amount}
-            <Button title="+" onClick={() => setAmount(amount + 1)} disabled={amount === 5}/>
+            <b>{dish.name}</b> {dash} {space}
+            <Button title="-" type="secondary" fontSize="s" shape='circle' onClick={() => setAmount(amount - 1)} disabled={amount === 0} />
+            {space}{amount}{space}
+            <Button title="+" type="secondary" fontSize="s" shape='circle' onClick={() => setAmount(amount + 1)} disabled={amount === 5} />
         </>
     );
 };
