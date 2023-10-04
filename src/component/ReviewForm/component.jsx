@@ -28,11 +28,11 @@ export const ReviwForm = () => {
   return (
     <div>
       <div>
-        <span>Name:</span>
+        <span>Name: </span>
         <input value={formValue.name} onChange={(event) => dispatch({ type: 'setName', payload: event.target.value})} />
       </div>
       <div>
-        <span>Review</span>
+        <span>Review: </span>
         <input
           value={formValue.review}
           onChange={(event) => {
@@ -41,7 +41,7 @@ export const ReviwForm = () => {
         />
       </div>
       <div>
-        <span>Rating</span>
+        <span>Rating: </span>
         <input
           value={formValue.rating}
           onChange={(event) => {
