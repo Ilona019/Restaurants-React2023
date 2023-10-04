@@ -1,5 +1,5 @@
-import { Button } from "../Button/component";
-import { useState } from "react";
+import { Button } from '../Button/component';
+import { useState } from 'react';
 
 export const Dish = ({ dish }) => {
     const [amount, setAmount] = useState(0);
@@ -12,7 +12,7 @@ export const Dish = ({ dish }) => {
     return (
         <>
             <b>{dish.name}</b> {dash} {space}
-            <Button title="-" type="secondary" fontSize="s" shape='circle' onClick={() => setAmount(amount - 1)} disabled={amount === 0} />
+            <Button title="-" type='secondary' fontSize='s' shape='circle' onClick={() => setAmount(amount - 1)} disabled={amount === 0} />
             {space}{amount}{space}
             <Button title="+" type="secondary" fontSize="s" shape='circle' onClick={() => setAmount(amount + 1)} disabled={amount === 5} />
         </>

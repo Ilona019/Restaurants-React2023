@@ -45,3 +45,8 @@
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+.dark {
+    background-color: #20106b;
+    color: #fff;
+}
