@@ -5,11 +5,9 @@ html, body {
 }
 
 body {
-    min-height: 100vh;
-    box-sizing: border-box;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    overflow: scroll;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -17,5 +15,5 @@ h1 {
 }
 
 #root {
-    height: 100vh;
+    height: 100%;
 }

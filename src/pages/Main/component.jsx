@@ -15,8 +15,8 @@ export const MainPage = () => {
   return (
     <div className={styles.root}>
       <Header restaurants={restaurants} activeTab={activeTab} onTabSelect={setActiveTab} />
-      <Restaurant restaurant={restaurants[activeTab]} />
-      <Footer />
+      <Restaurant className={styles.mainArea} restaurant={restaurants[activeTab]} />
+      <Footer className={styles.footer}/>
     </div>
   );
 };
