@@ -1,5 +1,7 @@
-export const Title = ({ name }) => {
+import styles from './styles.module.css';
+
+export const Title = ({ name, type }) => {
     return (
-        <h1>{name}</h1>
+        <h1 className={styles[type]}>{name}</h1>
     );
 };
