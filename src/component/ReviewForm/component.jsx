@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { Button } from '../Button/component';
 
 const DEFAULT_VALUE = {
   name: '',
@@ -15,7 +16,6 @@ const reducer = (state, action) => {
     case 'setRating':
       return { ...state, rating: action.payload };
     case 'reset':
-        console.log({   ...DEFAULT_VALUE});
       return { ...DEFAULT_VALUE };
     default:
       return state;
@@ -29,7 +29,7 @@ export const ReviwForm = () => {
     <div>
       <div>
         <span>Name: </span>
-        <input value={formValue.name} onChange={(event) => dispatch({ type: 'setName', payload: event.target.value})} />
+        <input value={formValue.name} onChange={(event) => dispatch({ type: 'setName', payload: event.target.value })} />
       </div>
       <div>
         <span>Review: </span>
@@ -49,7 +49,7 @@ export const ReviwForm = () => {
           }}
         />
       </div>
-      <button onClick={() => dispatch({ type: 'reset' })}>Save</button>
+      <Button title='Save' type='submit' shape='circle' onClick={() => dispatch({ type: 'reset' })}/>
     </div>
   );
 };

@@ -41,6 +41,17 @@
     text-align: center;
 }
 
+.submit {
+    width: 64px;
+    height: 32px;
+    border: solid 2px #1d3301;
+    background-color: #fbe89a;
+}
+
+.submit:hover {
+    background-color: #f5d170;
+}
+
 .secondary:disabled {
     cursor: not-allowed;
     opacity: 0.5;
