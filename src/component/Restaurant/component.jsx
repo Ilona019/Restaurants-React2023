@@ -1,7 +1,7 @@
 import { Title } from '../Title/component';
 import { Menu } from '../Menu/component';
 import { Reviews } from '../Reviews/component';
-import { ReviwForm } from '../ReviewForm/component';
+import { AddReviwButton } from '../AddReviwButton/component';
 import styles from './styles.module.css';
 
 export const Restaurant = ({ restaurant, className }) => {
@@ -10,7 +10,7 @@ export const Restaurant = ({ restaurant, className }) => {
             <Title name={restaurant.name} type='secondary'/>
             <Menu menu={restaurant.menu} />
             <Reviews reviews={restaurant.reviews} />
-            <ReviwForm/>
+            <AddReviwButton/>
         </div>
     );
 };

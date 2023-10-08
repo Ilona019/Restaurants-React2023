@@ -7,11 +7,18 @@ import { ThemeContext } from "../../contexts/Theme";
 import styles from "./styles.module.css";
 
 export const Header = ({ className, restaurants, activeTab, onTabSelect }) => {
-  const { changeTheme } = useContext(ThemeContext);
+  const { theme, changeTheme } = useContext(ThemeContext);
   return (
     <header className={classNames(styles.root, className)}>
       <Title name="Food ordering service" type="primary" />
-      <Button title="Theme" type="switch" fontSize="l" onClick={changeTheme} />
+      <div className={styles.toggleButton}>
+        <Button
+          title={theme + " theme"}
+          type="primary"
+          fontSize="l"
+          onClick={changeTheme}
+        />
+      </div>
       <RestaurantTabs
         restaurants={restaurants}
         activeTab={activeTab}

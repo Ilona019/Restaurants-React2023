@@ -31,6 +31,17 @@
     height: 100%;
 }
 
+.primary {
+    width: auto;
+    height: 32px;
+    border: solid 2px #1d3301;
+    background-color: #fbe89a;
+}
+
+.primary:hover {
+    background-color: #f5d170;
+}
+
 .secondary {
     background-color: #37616D;
     padding: 0;
@@ -41,15 +52,18 @@
     text-align: center;
 }
 
-.submit {
-    width: 64px;
+.close {
+    width: 32px;
     height: 32px;
-    border: solid 2px #1d3301;
-    background-color: #fbe89a;
+    padding: 0;
+    font-size: 32px;
 }
 
-.submit:hover {
-    background-color: #f5d170;
+.close:after {
+    content: "\00d7";
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .secondary:disabled {
@@ -60,4 +74,9 @@
 .dark {
     background-color: #20106b;
     color: #fff;
+}
+
+.dark:hover {
+    background-color: #8caec9;
+    color: #20106b;
 }
