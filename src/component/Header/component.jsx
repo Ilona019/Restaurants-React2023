@@ -16,14 +16,12 @@ export const Header = ({ className, restaurants, activeTab, onTabSelect }) => {
           title={theme + " theme"}
           type="primary"
           fontSize="l"
-          onClick={changeTheme}
-        />
+          onClick={changeTheme} />
       </div>
       <RestaurantTabs
         restaurants={restaurants}
         activeTab={activeTab}
-        onTabSelect={onTabSelect}
-      />
+        onTabSelect={onTabSelect} />
     </header>
   );
 };

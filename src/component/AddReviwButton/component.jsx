@@ -9,12 +9,13 @@ export const AddReviwButton = () => {
   const onClose = () => setIsModalOpened(false);
   return (
     <>
-      <Button title="Add new review" type="primary" onClick={() => setIsModalOpened(true)} />
+      <Button
+        title="Add new review"
+        type="primary"
+        onClick={() => setIsModalOpened(true)} />
       {isModalOpened && (
-        <Modal title='Create review' onClose={onClose}>
-          <ReviwForm
-            onSubmit={() => setIsModalOpened(false)}
-          />
+        <Modal title="Create review" onClose={onClose}>
+          <ReviwForm onSubmit={() => setIsModalOpened(false)} />
         </Modal>
       )}
     </>

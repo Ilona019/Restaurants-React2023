@@ -11,8 +11,7 @@ export const Layout = ({restaurants, activeTab, setActiveTab, children }) => {
         className={styles.header}
         restaurants={restaurants}
         activeTab={activeTab}
-        onTabSelect={setActiveTab}
-      />
+        onTabSelect={setActiveTab} />
       <main>{children}</main>
       <Footer className={styles.footer} />
       </div>

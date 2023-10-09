@@ -35,8 +35,7 @@ export const ReviwForm = () => {
           value={formValue.name}
           onChange={(event) =>
             dispatch({ type: "setName", payload: event.target.value })
-          }
-        />
+          } />
       </div>
       <div className={styles.item}>
         <span>Review: </span>
@@ -47,8 +46,7 @@ export const ReviwForm = () => {
           value={formValue.review}
           onChange={(event) => {
             dispatch({ type: "setReview", payload: event.target.value });
-          }}
-        ></textarea>
+          }}></textarea>
       </div>
       <div className={styles.item}>
         <span>Rating: </span>
@@ -57,16 +55,14 @@ export const ReviwForm = () => {
           value={formValue.rating}
           onChange={(event) => {
             dispatch({ type: "setRating", payload: event.target.value });
-          }}
-        />
+          }} />
       </div>
       <div className={styles.buttonSubmit}>
         <Button
           title="Save"
           type="primary"
           shape="circle"
-          onClick={() => dispatch({ type: "reset" })}
-        />
+          onClick={() => dispatch({ type: "reset" })} />
       </div>
     </div>
   );
