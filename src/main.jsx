@@ -1,8 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { MainPage } from './pages/Main/component';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { MainPage } from "./pages/Main/component";
+import { ThemeProvider } from "./contexts/Theme";
+import "./index.css";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
-root.render(<MainPage />);
+root.render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <MainPage />
+    </ThemeProvider>
+  </React.StrictMode>
+);

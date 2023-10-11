@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import styles from './styles.module.css';
+import classNames from "classnames";
+import styles from "./styles.module.css";
 
-export const Footer = ({className}) => {
+export const Footer = ({ className }) => {
   return <footer className={classNames(styles.root, className)}></footer>;
 };

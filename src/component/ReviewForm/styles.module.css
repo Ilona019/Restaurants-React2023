@@ -1,0 +1,29 @@
+.root {
+   width: 300px;
+   height: 220px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+
+.item {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   margin-bottom: 16px;
+
+}
+
+.item input, textarea {
+   border: 1px solid #37616d;
+   border-radius: 4px;
+}
+
+.buttonSubmit {
+   align-self: flex-end;
+}
+
+textarea {
+   box-sizing: border-box;
+   resize: none;
+ }
