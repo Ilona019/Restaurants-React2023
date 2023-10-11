@@ -1,20 +1,18 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/Theme";
+import { useTheme } from "../../contexts/Theme";
 import classNames from "classnames";
 import styles from "./styles.module.css";
 
 export const Button = ({
   title,
   type,
-  active,
-  fontSize,
+  active = false,
+  fontSize = "s",
   shape,
   disabled,
   className,
   onClick,
 }) => {
-  const themeContext = useContext(ThemeContext);
-  const isDark = themeContext.theme === "dark";
+  const {theme} = useTheme();
 
   return (
     <button
@@ -23,15 +21,15 @@ export const Button = ({
         styles[className],
         styles[type],
         styles["fontSize__" + fontSize],
+        styles[theme],
         {
           [styles.disabled]: disabled,
           [styles.active]: active,
-          [styles["shape__" + shape]]: shape,
-          [styles.dark]: isDark,
+          [styles["shape__" + shape]]: shape
         }
       )}
       disabled={disabled}
-      onClick={() => onClick(themeContext.theme)}>
+      onClick={() => onClick(theme)}>
       {title}
     </button>
   );

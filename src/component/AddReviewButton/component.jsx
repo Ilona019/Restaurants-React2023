@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { createPortal } from "react-dom";
 import { Button } from "../Button/component";
 import { Modal } from "../Modal/component";
 import { ReviwForm } from "../ReviewForm/component";
 
-export const AddReviwButton = () => {
+export const AddReviewButton = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const onClose = () => setIsModalOpened(false);
   return (
