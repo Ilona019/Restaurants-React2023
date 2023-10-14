@@ -29,7 +29,7 @@ export const Button = ({
         }
       )}
       disabled={disabled}
-      onClick={() => onClick(theme)}>
+      onClick={onClick}>
       {title}
     </button>
   );
