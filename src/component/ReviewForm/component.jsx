@@ -1,11 +1,12 @@
 import { useReducer } from "react";
 import { Button } from "../Button/component";
 import styles from "./styles.module.css";
+import { RatingInput } from "../RatingInput/RatingInput";
 
 const DEFAULT_VALUE = {
   name: "",
   review: "",
-  rating: "",
+  rating: 1,
 };
 
 const reducer = (state, action) => {
@@ -50,11 +51,10 @@ export const ReviwForm = () => {
       </div>
       <div className={styles.item}>
         <span>Rating: </span>
-        <input
-          type="text"
+        <RatingInput
           value={formValue.rating}
-          onChange={(event) => {
-            dispatch({ type: "setRating", payload: event.target.value });
+          onChange={(value) => {
+            dispatch({ type: "setRating", payload: value });
           }} />
       </div>
       <div className={styles.buttonSubmit}>
