@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { Button } from "../Button/component";
 import styles from "./styles.module.css";
-import { RatingInput } from "../RatingInput/RatingInput";
+import { RatingInput } from "../RatingInput/component";
 
 const DEFAULT_VALUE = {
   name: "",

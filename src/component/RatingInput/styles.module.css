@@ -23,13 +23,13 @@
 
 .star:hover {
     color: #ffd700;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .hovered {
-    color: gold;
+    color: #ffd700;
 }
 
 .star.active {
-    color: gold;
+    color: #ffd700;
 }

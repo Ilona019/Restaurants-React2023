@@ -1,12 +1,15 @@
+import { useSelector } from "react-redux";
 import { Button } from "../Button/component";
+import { selectRestaurantById } from "../../redux/entities/restaurant/selectors";
 
-export const Tab = ({ indexTab, name, isActiveTab, onClick }) => {
+export const Tab = ({ idTab, isActiveTab, onClick }) => {
+  const restaurant = useSelector((state) => selectRestaurantById(state, idTab));
   return (
     <Button
-      title={name}
+      title={restaurant.name}
       active={isActiveTab}
       fontSize="l"
       className="fullHeight"
-      onClick={() => onClick(indexTab)} />
+      onClick={() => onClick(idTab)} />
   );
 };
