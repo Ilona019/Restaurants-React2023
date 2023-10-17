@@ -1,4 +1,4 @@
-import { Dish } from "../Dish/component";
+import { DishContainer } from "../Dish/container";
 import styles from "./styles.module.css";
 
 export const Menu = ({ menu }) => {
@@ -7,9 +7,9 @@ export const Menu = ({ menu }) => {
       <h2>Menu</h2>
       {menu?.length > 0 && (
         <ul>
-          {menu.map((dish) => (
-            <li className={styles.item} key={dish.id}>
-              <Dish dish={dish} />
+          {menu.map((dishId) => (
+            <li className={styles.item} key={dishId}>
+              <DishContainer dishId={dishId} />
             </li>
           ))}
         </ul>

@@ -1,12 +1,12 @@
 import { Button } from "../Button/component";
 
-export const Tab = ({ indexTab, name, isActiveTab, onClick }) => {
+export const Tab = ({ restaurantName, isActiveTab, onClick }) => {
   return (
     <Button
-      title={name}
+      title={restaurantName}
       active={isActiveTab}
       fontSize="l"
       className="fullHeight"
-      onClick={() => onClick(indexTab)} />
+      onClick={onClick} />
   );
 };

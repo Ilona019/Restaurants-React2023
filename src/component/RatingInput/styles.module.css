@@ -1,0 +1,35 @@
+.root {
+    display: flex;
+    max-height: 20px;
+    width: auto;
+}
+
+.star {
+    color: #808080;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    position: relative;
+}
+
+.star::before {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    content: "\2605";
+}
+
+.star:hover {
+    color: #ffd700;
+    opacity: 0.5;
+}
+
+.hovered {
+    color: #ffd700;
+}
+
+.star.active {
+    color: #ffd700;
+}

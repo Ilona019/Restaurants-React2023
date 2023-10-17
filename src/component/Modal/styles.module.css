@@ -16,9 +16,18 @@
  }
 
  .title {
-    margin: 0 12px;
+   margin: 0 12px;
  }
 
  .content {
-    padding: 8px 12px;
+   padding: 8px 12px;
+ }
+ 
+ .overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgb(55, 97, 109, 0.5);
  }

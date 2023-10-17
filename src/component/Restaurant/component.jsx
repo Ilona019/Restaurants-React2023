@@ -8,7 +8,7 @@ export const Restaurant = ({ restaurant, className }) => {
     <div className={className}>
       <Title name={restaurant.name} type="secondary" />
       <Menu menu={restaurant.menu} />
-      <Reviews reviews={restaurant.reviews} />
+      <Reviews reviewIds={restaurant.reviews} />
       <AddReviewButton />
     </div>
   );

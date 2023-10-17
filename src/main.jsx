@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { MainPage } from "./pages/Main/component";
+import{ App } from "./App";
 import { ThemeProvider } from "./contexts/Theme";
 import "./index.css";
 
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <MainPage />
+      <App />
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,11 +1,8 @@
-import { Button } from "../Button/component";
 import { useState } from "react";
+import { Button } from "../Button/component";
 
 export const Dish = ({ dish }) => {
   const [amount, setAmount] = useState(0);
-  if (!dish.name) {
-    return null;
-  }
 
   const dash = String.fromCharCode(8212);
   const space = String.fromCharCode(160);
