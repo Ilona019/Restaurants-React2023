@@ -1,13 +1,9 @@
-import { useSelector } from "react-redux";
 import { Title } from "../Title/component";
 import { Menu } from "../Menu/component";
 import { Reviews } from "../Reviews/component";
 import { AddReviewButton } from "../AddReviewButton/component";
-import { selectRestaurantById } from "../../redux/entities/restaurant/selectors";
 
-export const Restaurant = ({ restaurantId, className }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
-
+export const Restaurant = ({ restaurant, className }) => {
   return (
     <div className={className}>
       <Title name={restaurant.name} type="secondary" />

@@ -1,4 +1,4 @@
-import { Tab } from "../Tab/component";
+import { RestaurantTabContainer } from "../RestaurantTab/container";
 import styles from "./styles.module.css";
 
 export const RestaurantTabs = ({
@@ -9,9 +9,9 @@ export const RestaurantTabs = ({
   return (
     <div className={styles.root}>
       {restaurantIds.map((restaurantId) => (
-        <Tab
+        <RestaurantTabContainer
           key={restaurantId}
-          idTab={restaurantId}
+          restaurantId={restaurantId}
           isActiveTab={restaurantId === activeTab}
           onClick={() => onTabSelect(restaurantId)} />
       ))}

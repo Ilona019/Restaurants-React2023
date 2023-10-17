@@ -1,15 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { Button } from "../Button/component";
-import { selectDishById } from "../../redux/entities/dish/selectors";
 
-export const Dish = ({ dishId }) => {
+export const Dish = ({ dish }) => {
   const [amount, setAmount] = useState(0);
-  const dish = useSelector((state) => selectDishById(state, dishId));
-
-  if (!dish) {
-    return null;
-  }
 
   const dash = String.fromCharCode(8212);
   const space = String.fromCharCode(160);

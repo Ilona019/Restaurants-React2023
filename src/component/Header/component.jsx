@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Title } from "../Title/component";
-import { RestaurantTabs } from "../RestaurantTabs/component";
+import { RestaurantTabsContainer } from "../RestaurantTabs/container";
 import { Button } from "../Button/component";
 import { useTheme } from "../../contexts/Theme";
 import styles from "./styles.module.css";
@@ -18,7 +18,7 @@ export const Header = ({ className, restaurantIds, activeTab, onTabSelect }) => 
           shape="superellipse"
           onClick={changeTheme} />
       </div>
-      <RestaurantTabs
+      <RestaurantTabsContainer
         restaurantIds={restaurantIds}
         activeTab={activeTab}
         onTabSelect={onTabSelect} />

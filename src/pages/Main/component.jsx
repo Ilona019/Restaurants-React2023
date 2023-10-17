@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Restaurant } from "../../component/Restaurant/component";
+import { RestaurantContainer } from "../../component/Restaurant/container";
 import { Layout } from "../../component/Layout/component";
-import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
+import { selectFirstRestaurantId } from "../../redux/entities/restaurant/selectors";
 import styles from "./styles.module.css";
 
 export const MainPage = () => {
-  const restaurantIds = useSelector(selectRestaurantIds);
-  const [activeTab, setActiveTab] = useState(restaurantIds[0]);
+  const firstRestaurantId = useSelector(selectFirstRestaurantId);
+  const [activeRestaurantId, setActiveTab] = useState(firstRestaurantId);
 
-  if (!restaurantIds?.length) {
+  if (!firstRestaurantId) {
     return null;
   }
 
-  const activeRestaurantId = restaurantIds.find(
-    (id) => id === activeTab
-  );
-
   return (
     <Layout
-      restaurantIds={restaurantIds}
-      activeTab={activeTab}
+      activeTab={activeRestaurantId}
       setActiveTab={setActiveTab}>
-      <Restaurant
+      <RestaurantContainer
         className={styles.mainArea}
         restaurantId={activeRestaurantId} />
     </Layout>
