@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRequest } from "../../hooks/use-request";
 import { RestaurantContainer } from "../../component/Restaurant/container";
 import { Layout } from "../../component/Layout/component";
-import { selectRestaurantIds, selectRestaurantLoadingStatus } from "../../redux/entities/restaurant/selectors";
 import { getRestaurantsIfNotExist } from "../../redux/entities/restaurant/thunks/get-restaurants";
-import { REQUEST_STATUS } from "../../constants/statuses";
+import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
+import { LOADING_STATUS } from "../../constants/loading-statuses";
 import styles from "./styles.module.css";
 
 export const MainPage = () => {
   const restaurantIds = useSelector(selectRestaurantIds);
-  const loadingStatus = useSelector(selectRestaurantLoadingStatus);
+  const restaurantLoadingStatus = useRequest(getRestaurantsIfNotExist);
   const [activeRestaurantId, setActiveTab] = useState();
   if (!activeRestaurantId && restaurantIds?.length) {
     setActiveTab(restaurantIds[0]);
@@ -22,7 +23,7 @@ export const MainPage = () => {
 
   return (
     <Layout activeTab={activeRestaurantId} setActiveTab={setActiveTab}>
-      {loadingStatus === REQUEST_STATUS.pending ? (
+      {restaurantLoadingStatus === LOADING_STATUS.loading ? (
         <h3>Loading...</h3>
       ) : (
         <RestaurantContainer

@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { selectRestaurantReviewsById } from "../../restaurant/selectors";
 import { selectReviewIds } from "../selectors";
 
-export const getReviewsByRestaturantIdIfNotExist = createAsyncThunk(
-"dish/getReviewsByRestaturantIdIfNotExist",
+export const getReviewsByRestaurantIdIfNotExist = createAsyncThunk(
+"dish/getReviewsByRestaurantIdIfNotExist",
 async (restaurantId) => {
     const response = fetch(`http://localhost:3001/api/reviews?restaurantId=:${restaurantId}`);
     return (await response).json();
