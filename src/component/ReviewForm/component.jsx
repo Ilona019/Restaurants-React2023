@@ -1,7 +1,9 @@
 import { useReducer } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "../Button/component";
-import styles from "./styles.module.css";
 import { RatingInput } from "../RatingInput/component";
+import { createReview } from "../../redux/entities/review/thunks/create-review";
+import styles from "./styles.module.css";
 
 const DEFAULT_VALUE = {
   name: "",
@@ -24,8 +26,9 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviwForm = () => {
+export const ReviwForm = ({ restaurantId }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
+  const dispatchCreateReview = useDispatch();
 
   return (
     <div className={styles.root}>
@@ -47,7 +50,7 @@ export const ReviwForm = () => {
           value={formValue.review}
           onChange={(event) => {
             dispatch({ type: "setReview", payload: event.target.value });
-          }}></textarea>
+          }} ></textarea>
       </div>
       <div className={styles.item}>
         <span>Rating: </span>
@@ -62,7 +65,25 @@ export const ReviwForm = () => {
           title="Save"
           type="primary"
           shape="circle"
-          onClick={() => dispatch({ type: "reset" })} />
+          onClick={() => {
+            dispatchCreateReview(
+              createReview(
+                {
+                  restaurantId: restaurantId,
+                  newReview: {
+                    id: restaurantId,
+                    userId: "1547335a-ea18-4547-a73d-32bd6e9f651c",
+                    text: formValue.review,
+                    rating: formValue.rating,
+                  },
+                },
+                { dispatch: dispatchCreateReview }
+              )
+            );
+            dispatch({
+              type: "reset"
+            });
+          }} />
       </div>
     </div>
   );
