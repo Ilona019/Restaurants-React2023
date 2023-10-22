@@ -15,7 +15,7 @@ const { reducer } = createSlice({
         state.status = REQUEST_STATUS.pending;
       })
       .addCase(getReviewsByRestaturantIdIfNotExist.fulfilled, (state, { payload }) => {
-        entityAdapter.setAll(state, payload);
+        entityAdapter.setMany(state, payload);
         state.status = REQUEST_STATUS.fulfilled;
       })
       .addCase(getReviewsByRestaturantIdIfNotExist.rejected, (state) => {
