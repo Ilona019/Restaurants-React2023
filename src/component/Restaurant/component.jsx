@@ -1,14 +1,14 @@
 import { Title } from "../Title/component";
-import { Menu } from "../Menu/component";
-import { Reviews } from "../Reviews/component";
 import { AddReviewButton } from "../AddReviewButton/component";
+import { MenuContainer } from "../Menu/container";
+import { ReviewsContainer } from "../Reviews/container";
 
 export const Restaurant = ({ restaurant, className }) => {
   return (
     <div className={className}>
       <Title name={restaurant.name} type="secondary" />
-      <Menu menu={restaurant.menu} />
-      <Reviews reviewIds={restaurant.reviews} />
+      <MenuContainer restaurantId={restaurant.id} />
+      <ReviewsContainer restaurantId={restaurant.id} />
       <AddReviewButton />
     </div>
   );

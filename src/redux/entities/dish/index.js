@@ -1,6 +1,6 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import{ REQUEST_STATUS } from "../../../constants/statuses";
-import { getDish } from "../../entities/dish/thunks/get-dish";
+import { getDishesByRestaturantIdIfNotExist } from "../../entities/dish/thunks/get-dishes-by-restaurant-id";
 
 const entityAdapter = createEntityAdapter();
 
@@ -11,14 +11,14 @@ const { reducer } = createSlice({
     }),
     extraReducers: (builder) =>
     builder
-      .addCase(getDish.pending, (state) => {
+      .addCase(getDishesByRestaturantIdIfNotExist.pending, (state) => {
         state.status = REQUEST_STATUS.pending;
       })
-      .addCase(getDish.fulfilled, (state, { payload }) => {
+      .addCase(getDishesByRestaturantIdIfNotExist.fulfilled, (state, { payload }) => {
         entityAdapter.setAll(state, payload);
         state.status = REQUEST_STATUS.fulfilled;
       })
-      .addCase(getDish.rejected, (state) => {
+      .addCase(getDishesByRestaturantIdIfNotExist.rejected, (state) => {
         state.status = REQUEST_STATUS.rejected;
       }),
 });

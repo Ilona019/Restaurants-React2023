@@ -1,22 +1,13 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectDishById, selectDishLoadingStatus } from "../../redux/entities/dish/selectors";
-import { getDish } from "../../redux/entities/dish/thunks/get-dish";
+import { useSelector } from "react-redux";
 import { Dish } from "./component";
-import { REQUEST_STATUS } from "../../constants/statuses";
+import { selectDishById } from "../../redux/entities/dish/selectors";
 
 export const DishContainer = ({ dishId }) => {
   const dish = useSelector((state) => selectDishById(state, dishId));
-  const loadingStatus = useSelector(selectDishLoadingStatus);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDish(dishId));
-  }, []);
 
   if (!dish) {
     return null;
   }
 
-  return loadingStatus === REQUEST_STATUS.pending ? <Dish dish={dish}/> : <h3>Loading...</h3>;
+  return <Dish dish={dish}/>
 };
