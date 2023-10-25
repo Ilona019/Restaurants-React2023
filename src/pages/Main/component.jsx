@@ -12,14 +12,17 @@ export const MainPage = () => {
   const restaurantIds = useSelector(selectRestaurantIds);
   const restaurantLoadingStatus = useRequest(getRestaurantsIfNotExist);
   const [activeRestaurantId, setActiveTab] = useState();
-  if (!activeRestaurantId && restaurantIds?.length) {
-    setActiveTab(restaurantIds[0]);
-  }
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRestaurantsIfNotExist());
   }, []);
+
+  useEffect(() => {
+    if (!activeRestaurantId && restaurantIds?.length) {
+      setActiveTab(restaurantIds[0]);
+    }
+  }, [restaurantIds]);
 
   return (
     <Layout activeTab={activeRestaurantId} setActiveTab={setActiveTab}>
@@ -28,7 +31,8 @@ export const MainPage = () => {
       ) : (
         <RestaurantContainer
           className={styles.mainArea}
-          restaurantId={activeRestaurantId} />
+          restaurantId={activeRestaurantId}
+        />
       )}
     </Layout>
   );
