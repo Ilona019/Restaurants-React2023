@@ -5,6 +5,7 @@ export const RestaurantTabs = ({
   restaurantIds,
   activeTab,
   onTabSelect,
+  onShowCart
 }) => {
   return (
     <div className={styles.root}>
@@ -13,7 +14,8 @@ export const RestaurantTabs = ({
           key={restaurantId}
           restaurantId={restaurantId}
           isActiveTab={restaurantId === activeTab}
-          onClick={() => onTabSelect(restaurantId)} />
+          onClick={() => {onTabSelect(restaurantId);
+             onShowCart(false)}} />
       ))}
     </div>
   );

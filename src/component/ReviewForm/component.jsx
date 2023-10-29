@@ -1,8 +1,6 @@
 import { useReducer } from "react";
-import { useDispatch } from "react-redux";
 import { Button } from "../Button/component";
 import { RatingInput } from "../RatingInput/component";
-import { createReview } from "../../redux/entities/review/thunks/create-review";
 import styles from "./styles.module.css";
 
 const DEFAULT_VALUE = {
@@ -26,9 +24,8 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviwForm = ({ restaurantId }) => {
+export const ReviewForm = ({ onSubmit }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
-  const dispatchCreateReview = useDispatch();
 
   return (
     <div className={styles.root}>
@@ -58,7 +55,8 @@ export const ReviwForm = ({ restaurantId }) => {
           value={formValue.rating}
           onChange={(value) => {
             dispatch({ type: "setRating", payload: value });
-          }} />
+          }}
+        />
       </div>
       <div className={styles.buttonSubmit}>
         <Button
@@ -66,20 +64,11 @@ export const ReviwForm = ({ restaurantId }) => {
           type="primary"
           shape="circle"
           onClick={() => {
-            dispatchCreateReview(
-              createReview(
-                {
-                  restaurantId: restaurantId,
-                  newReview: {
-                    id: restaurantId,
-                    userId: "1547335a-ea18-4547-a73d-32bd6e9f651c",
-                    text: formValue.review,
-                    rating: formValue.rating,
-                  },
-                },
-                { dispatch: dispatchCreateReview }
-              )
-            );
+            onSubmit({
+                userId: "1547335a-ea18-4547-a73d-32bd6e9f651c",
+                text: formValue.review,
+                rating: formValue.rating
+            });
             dispatch({
               type: "reset"
             });

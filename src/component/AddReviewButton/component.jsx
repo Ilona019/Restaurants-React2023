@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../Button/component";
 import { Modal } from "../Modal/component";
-import { ReviwForm } from "../ReviewForm/component";
+import { ReviewFormContainer } from "../ReviewForm/container";
 
 export const AddReviewButton = ({ restaurantId }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
@@ -14,7 +14,7 @@ export const AddReviewButton = ({ restaurantId }) => {
         onClick={() => setIsModalOpened(true)} />
       {isModalOpened && (
         <Modal title="Create review" onClose={onClose}>
-          <ReviwForm restaurantId={restaurantId} onSubmit={() => setIsModalOpened(false)} />
+          <ReviewFormContainer restaurantId={restaurantId} onSubmit={() => setIsModalOpened(false)} />
         </Modal>
       )}
     </>

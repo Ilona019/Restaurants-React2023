@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/component";
+import { selectDishAmountById } from "../../redux/ui/cart/selectors";
+import { cartActions } from "../../redux/ui/cart";
 
 export const Dish = ({ dish }) => {
-  const [amount, setAmount] = useState(0);
+  const amount = useSelector((state) => selectDishAmountById(state, dish.id));
+  const dispatchAmount = useDispatch();
+
 
   const dash = String.fromCharCode(8212);
   const space = String.fromCharCode(160);
@@ -15,7 +19,7 @@ export const Dish = ({ dish }) => {
         fontSize="s"
         shape="circle"
         disabled={amount === 0}
-        onClick={() => setAmount(amount - 1)} />
+        onClick={() => dispatchAmount(cartActions.decrement(dish.id))} />
       {space}
       {amount}
       {space}
@@ -25,7 +29,7 @@ export const Dish = ({ dish }) => {
         fontSize="s"
         shape="circle"
         disabled={amount === 5}
-        onClick={() => setAmount(amount + 1)} />
+        onClick={() => dispatchAmount(cartActions.increment(dish.id))} />
     </>
   );
 };

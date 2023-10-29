@@ -6,13 +6,17 @@ import { Layout } from "../../component/Layout/component";
 import { getRestaurantsIfNotExist } from "../../redux/entities/restaurant/thunks/get-restaurants";
 import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
 import { LOADING_STATUS } from "../../constants/loading-statuses";
+import { selectCartDishIds } from "../../redux/ui/cart/selectors";
 import styles from "./styles.module.css";
+import { CartContainer } from "../../component/Cart/container";
 
 export const MainPage = () => {
   const restaurantIds = useSelector(selectRestaurantIds);
   const restaurantLoadingStatus = useRequest(getRestaurantsIfNotExist);
   const [activeRestaurantId, setActiveTab] = useState();
+  const [isOpenCartPage, showCart] = useState(false);
   const dispatch = useDispatch();
+  const dishIds = useSelector(selectCartDishIds);
 
   useEffect(() => {
     dispatch(getRestaurantsIfNotExist());
@@ -25,14 +29,18 @@ export const MainPage = () => {
   }, [restaurantIds]);
 
   return (
-    <Layout activeTab={activeRestaurantId} setActiveTab={setActiveTab}>
-      {restaurantLoadingStatus === LOADING_STATUS.loading ? (
+    <Layout
+      activeTab={activeRestaurantId}
+      setActiveTab={setActiveTab}
+      showCart={showCart} >
+      {isOpenCartPage ? (
+        <CartContainer dishIds={dishIds} />
+      ) : restaurantLoadingStatus === LOADING_STATUS.loading ? (
         <h3>Loading...</h3>
       ) : (
         <RestaurantContainer
           className={styles.mainArea}
-          restaurantId={activeRestaurantId}
-        />
+          restaurantId={activeRestaurantId} />
       )}
     </Layout>
   );
