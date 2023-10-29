@@ -1,18 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedReviews } from "../../../constants/mock-normalized";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { getReviewsByRestaturantIdIfNotExist } from "../../entities/review/thunks/get-reviews-by-restaurant-id";
+import { REQUEST_STATUS } from "../../../constants/statuses";
 
-const initialState = {
-    entities: normalizedReviews.reduce((acc, review) => {
-        acc[review.id] = review;
-
-        return acc;
-    }, {}),
-    ids: normalizedReviews.map(({ id }) => id)
-}
+const entityAdapter = createEntityAdapter();
 
 const { reducer } = createSlice({
-    name: "review",
-    initialState
+    name: "dish",
+    initialState: entityAdapter.getInitialState({
+        status: REQUEST_STATUS.idle
+    }),
+    extraReducers: (builder) =>
+    builder
+      .addCase(getReviewsByRestaturantIdIfNotExist.pending, (state) => {
+        state.status = REQUEST_STATUS.pending;
+      })
+      .addCase(getReviewsByRestaturantIdIfNotExist.fulfilled, (state, { payload }) => {
+        entityAdapter.setMany(state, payload);
+        state.status = REQUEST_STATUS.fulfilled;
+      })
+      .addCase(getReviewsByRestaturantIdIfNotExist.rejected, (state) => {
+        state.status = REQUEST_STATUS.rejected;
+      }),
 });
 
 export default reducer;

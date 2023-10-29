@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dish/selectors";
 import { Dish } from "./component";
+import { selectDishById } from "../../redux/entities/dish/selectors";
 
 export const DishContainer = ({ dishId }) => {
   const dish = useSelector((state) => selectDishById(state, dishId));
@@ -9,5 +9,5 @@ export const DishContainer = ({ dishId }) => {
     return null;
   }
 
-  return <Dish dish={dish} />;
+  return <Dish dish={dish}/>
 };

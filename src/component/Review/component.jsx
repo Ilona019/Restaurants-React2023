@@ -1,4 +1,4 @@
-import { UserContainer } from "../User/selector";
+import { UserContainer } from "../User/container";
 
 export const Review = ({ review }) => {
   return (

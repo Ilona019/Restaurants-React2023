@@ -1,20 +1,16 @@
 import { ReviewContainer } from "../Review/container";
 
-export const Reviews = ({ reviewIds }) => {
+export const Reviews = ({ reviews }) => {
   return (
     <div>
-      <h2>Reviews</h2>
-      {reviewIds?.length > 0 && (
-        <ul>
-          {reviewIds.map((reviewId) => {
-            return (
-              <li key={reviewId}>
-                <ReviewContainer reviewId={reviewId} />
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <h3>Reviews</h3>
+      <ul>
+        {reviews.map((id) => (
+          <li key={id}>
+            <ReviewContainer reviewId={id} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
