@@ -1,33 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Reviews } from "./component";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRequest } from "../../hooks/use-request";
+import { Reviews } from "./component";
+import { getReviewsByRestaurantIdIfNotExist } from "../../redux/entities/review/thunks/get-reviews-by-restaurant-id";
 import { selectRestaurantReviewsById } from "../../redux/entities/restaurant/selectors";
-import { selectReviewsLoadingStatus } from "../../redux/entities/review/selectors";
-import { getReviewsByRestaturantIdIfNotExist } from "../../redux/entities/review/thunks/get-reviews-by-restaurant-id";
 import { getUsersIfNotExist } from "../../redux/entities/user/thunks/get-users";
-import { selectUsersLoadingStatus } from "../../redux/entities/user/selectors";
-import { REQUEST_STATUS } from "../../constants/statuses";
+import { LOADING_STATUS } from "../../constants/loading-statuses";
 
 export const ReviewsContainer = ({ restaurantId }) => {
   const restaurantReviews = useSelector((state) =>
     selectRestaurantReviewsById(state, restaurantId)
   );
+
+  const reviewsLoadingStatus = useRequest(
+    getReviewsByRestaurantIdIfNotExist,
+    restaurantId
+  );
+
+  const usersLoadingStatus = useRequest(getUsersIfNotExist, restaurantId);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getReviewsByRestaturantIdIfNotExist(restaurantId));
+    dispatch(getReviewsByRestaurantIdIfNotExist(restaurantId));
   }, [restaurantId]);
 
   useEffect(() => {
-    dispatch(getUsersIfNotExist())
+    dispatch(getUsersIfNotExist());
   }, []);
 
-  const reviewsLoadingStatus = useSelector(selectReviewsLoadingStatus);
-  const usersLoadingStatus = useSelector(selectUsersLoadingStatus);
-
   if (
-    reviewsLoadingStatus === REQUEST_STATUS.pending ||
-    usersLoadingStatus === REQUEST_STATUS.pending
+    reviewsLoadingStatus === LOADING_STATUS.loading ||
+    usersLoadingStatus === LOADING_STATUS.loading
   ) {
     return <h3>Loading...</h3>;
   }

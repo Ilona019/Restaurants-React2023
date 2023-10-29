@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { Button } from "../Button/component";
-import styles from "./styles.module.css";
 import { RatingInput } from "../RatingInput/component";
+import styles from "./styles.module.css";
 
 const DEFAULT_VALUE = {
   name: "",
@@ -24,7 +24,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviwForm = () => {
+export const ReviewForm = ({ onSubmit }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
 
   return (
@@ -47,7 +47,7 @@ export const ReviwForm = () => {
           value={formValue.review}
           onChange={(event) => {
             dispatch({ type: "setReview", payload: event.target.value });
-          }}></textarea>
+          }} ></textarea>
       </div>
       <div className={styles.item}>
         <span>Rating: </span>
@@ -55,14 +55,24 @@ export const ReviwForm = () => {
           value={formValue.rating}
           onChange={(value) => {
             dispatch({ type: "setRating", payload: value });
-          }} />
+          }}
+        />
       </div>
       <div className={styles.buttonSubmit}>
         <Button
           title="Save"
           type="primary"
           shape="circle"
-          onClick={() => dispatch({ type: "reset" })} />
+          onClick={() => {
+            onSubmit({
+                userId: "1547335a-ea18-4547-a73d-32bd6e9f651c",
+                text: formValue.review,
+                rating: formValue.rating
+            });
+            dispatch({
+              type: "reset"
+            });
+          }} />
       </div>
     </div>
   );

@@ -9,5 +9,3 @@ export const selectRestaurantMenuById = (state, id) => selectRestaurantById(stat
 
 export const selectRestaurantReviewsById = (state, id) =>
   selectRestaurantById(state, id).reviews;
-
-  export const selectRestaurantLoadingStatus = (state) => selectRestaurantModule(state).status;

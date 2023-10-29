@@ -5,7 +5,7 @@ import { Button } from "../Button/component";
 import { useTheme } from "../../contexts/Theme";
 import styles from "./styles.module.css";
 
-export const Header = ({ className, restaurantIds, activeTab, onTabSelect }) => {
+export const Header = ({ className, restaurantIds, activeTab, onTabSelect, onShowCart }) => {
   const { theme, changeTheme } = useTheme();
   return (
     <header className={classNames(styles.root, className)}>
@@ -21,7 +21,14 @@ export const Header = ({ className, restaurantIds, activeTab, onTabSelect }) => 
       <RestaurantTabsContainer
         restaurantIds={restaurantIds}
         activeTab={activeTab}
-        onTabSelect={onTabSelect} />
+        onTabSelect={onTabSelect}
+        onShowCart={onShowCart} />
+      <Button
+          title="Cart"
+          type="primary"
+          fontSize="l"
+          shape="superellipse"
+          onClick={() => onShowCart(true)} />  
     </header>
   );
 };

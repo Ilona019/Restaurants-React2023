@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "../Button/component";
 import { Modal } from "../Modal/component";
-import { ReviwForm } from "../ReviewForm/component";
+import { ReviewFormContainer } from "../ReviewForm/container";
 
-export const AddReviewButton = () => {
+export const AddReviewButton = ({ restaurantId }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const onClose = () => setIsModalOpened(false);
   return (
@@ -14,7 +14,7 @@ export const AddReviewButton = () => {
         onClick={() => setIsModalOpened(true)} />
       {isModalOpened && (
         <Modal title="Create review" onClose={onClose}>
-          <ReviwForm onSubmit={() => setIsModalOpened(false)} />
+          <ReviewFormContainer restaurantId={restaurantId} onSubmit={() => setIsModalOpened(false)} />
         </Modal>
       )}
     </>

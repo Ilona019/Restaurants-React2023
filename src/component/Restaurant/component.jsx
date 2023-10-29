@@ -9,7 +9,7 @@ export const Restaurant = ({ restaurant, className }) => {
       <Title name={restaurant.name} type="secondary" />
       <MenuContainer restaurantId={restaurant.id} />
       <ReviewsContainer restaurantId={restaurant.id} />
-      <AddReviewButton />
+      <AddReviewButton  restaurantId={restaurant.id} />
     </div>
   );
 };
