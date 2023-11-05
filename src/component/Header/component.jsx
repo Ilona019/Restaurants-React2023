@@ -1,11 +1,17 @@
 import classNames from "classnames";
 import { Title } from "../Title/component";
-import { RestaurantTabsContainer } from "../RestaurantTabs/container";
+import { RestaurantTabs } from "../RestaurantTabs/component";
 import { Button } from "../Button/component";
 import { useTheme } from "../../contexts/Theme";
 import styles from "./styles.module.css";
 
-export const Header = ({ className, restaurantIds, activeTab, onTabSelect, onShowCart }) => {
+export const Header = ({
+  className,
+  restaurants,
+  activeRestaurant,
+  onTabSelect,
+  onShowCart,
+}) => {
   const { theme, changeTheme } = useTheme();
   return (
     <header className={classNames(styles.root, className)}>
@@ -18,17 +24,17 @@ export const Header = ({ className, restaurantIds, activeTab, onTabSelect, onSho
           shape="superellipse"
           onClick={changeTheme} />
       </div>
-      <RestaurantTabsContainer
-        restaurantIds={restaurantIds}
-        activeTab={activeTab}
+      <RestaurantTabs
+        restaurants={restaurants}
+        activeRestaurant={activeRestaurant}
         onTabSelect={onTabSelect}
         onShowCart={onShowCart} />
       <Button
-          title="Cart"
-          type="primary"
-          fontSize="l"
-          shape="superellipse"
-          onClick={() => onShowCart(true)} />  
+        title="Cart"
+        type="primary"
+        fontSize="l"
+        shape="superellipse"
+        onClick={() => onShowCart(true)} />
     </header>
   );
 };

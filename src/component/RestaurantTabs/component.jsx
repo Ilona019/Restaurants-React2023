@@ -2,21 +2,21 @@ import { RestaurantTabContainer } from "../RestaurantTab/container";
 import styles from "./styles.module.css";
 
 export const RestaurantTabs = ({
-  restaurantIds,
-  activeTab,
+  restaurants,
+  activeRestaurant,
   onTabSelect,
   onShowCart
 }) => {
   return (
     <div className={styles.root}>
-      {restaurantIds.map((restaurantId) => (
+      {(restaurants || []).map((restaurant) => (
         <RestaurantTabContainer
-          key={restaurantId}
-          restaurantId={restaurantId}
-          isActiveTab={restaurantId === activeTab}
-          onClick={() => {onTabSelect(restaurantId);
+          key={restaurant.id}
+          restaurant={restaurant}
+          isActiveTab={restaurant?.id === activeRestaurant?.id}
+          onClick={() => {onTabSelect(restaurant);
              onShowCart(false)}} />
-      ))}
+          ))}
     </div>
   );
 };

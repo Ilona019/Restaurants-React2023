@@ -7,7 +7,6 @@ export const Dish = ({ dish }) => {
   const amount = useSelector((state) => selectDishAmountById(state, dish.id));
   const dispatchAmount = useDispatch();
 
-
   const dash = String.fromCharCode(8212);
   const space = String.fromCharCode(160);
   return (
@@ -19,7 +18,7 @@ export const Dish = ({ dish }) => {
         fontSize="s"
         shape="circle"
         disabled={amount === 0}
-        onClick={() => dispatchAmount(cartActions.decrement(dish.id))} />
+        onClick={() => dispatchAmount(cartActions.decrement(dish))} />
       {space}
       {amount}
       {space}
@@ -29,7 +28,7 @@ export const Dish = ({ dish }) => {
         fontSize="s"
         shape="circle"
         disabled={amount === 5}
-        onClick={() => dispatchAmount(cartActions.increment(dish.id))} />
+        onClick={() => dispatchAmount(cartActions.increment(dish))} />
     </>
   );
 };

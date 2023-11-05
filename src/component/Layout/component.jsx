@@ -3,13 +3,14 @@ import { Footer } from "../Footer/component";
 import classNames from "classnames";
 import styles from "./styles.module.css";
 
-export const Layout = ({ activeTab, setActiveTab,  showCart, children }) => {
+export const Layout = ({ restaurants, activeRestaurant, setActiveTab,  showCart, children }) => {
   return (
     <div>
       <div className={classNames(styles.root)}>
       <Header
         className={styles.header}
-        activeTab={activeTab}
+        restaurants={restaurants}
+        activeRestaurant={activeRestaurant}
         onTabSelect={setActiveTab}
         onShowCart={showCart} />
       <main>{children}</main>
