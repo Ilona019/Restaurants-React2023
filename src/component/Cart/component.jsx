@@ -1,17 +1,17 @@
 import { DishContainer } from "../Dish/container";
 import styles from "./styles.module.css";
 
-export const Cart = ({ dishIds }) => {
+export const Cart = ({ dishes }) => {
   return (
-    <div className={styles.root}>
+    <div>
       <h2>Cart</h2>
-      {!dishIds?.length ? (
+      {!dishes?.length ? (
         <h3>The cart is empty. Choose dishes</h3>
       ) : (
         <ul>
-          {dishIds.map((dishId) => (
-            <li key={dishId} className={styles.item}>
-              <DishContainer key={dishId} dishId={dishId} />
+          {dishes.map((dish) => (
+            <li key={dish.id} className={styles.item}>
+              <DishContainer dish={dish} />
             </li>
           ))}
         </ul>

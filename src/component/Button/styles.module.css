@@ -33,8 +33,9 @@
     font-size: 24px;
 }
 
-.fullHeight {
+.fullSize {
     height: 100%;
+    width: 100%;
 }
 
 .primary {

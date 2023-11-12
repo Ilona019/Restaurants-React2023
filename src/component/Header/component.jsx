@@ -1,11 +1,11 @@
-import classNames from "classnames";
+import { NavLink } from "react-router-dom";
 import { Title } from "../Title/component";
-import { RestaurantTabsContainer } from "../RestaurantTabs/container";
 import { Button } from "../Button/component";
 import { useTheme } from "../../contexts/Theme";
+import classNames from "classnames";
 import styles from "./styles.module.css";
 
-export const Header = ({ className, restaurantIds, activeTab, onTabSelect, onShowCart }) => {
+export const Header = ({ className }) => {
   const { theme, changeTheme } = useTheme();
   return (
     <header className={classNames(styles.root, className)}>
@@ -18,17 +18,31 @@ export const Header = ({ className, restaurantIds, activeTab, onTabSelect, onSho
           shape="superellipse"
           onClick={changeTheme} />
       </div>
-      <RestaurantTabsContainer
-        restaurantIds={restaurantIds}
-        activeTab={activeTab}
-        onTabSelect={onTabSelect}
-        onShowCart={onShowCart} />
-      <Button
-          title="Cart"
-          type="primary"
+      <NavLink
+        to="/"
+        replace
+        className={({ isActive }) =>
+          classNames(styles.tab, { [styles.activeTab]: isActive })
+        }>
+        <Button title="Home" fontSize="l" className="fullSize" />
+      </NavLink>
+      <NavLink
+        to="/restaurants"
+        className={({ isActive }) =>
+          classNames(styles.tab, { [styles.activeTab]: isActive })
+        }>
+        <Button
+          title="List of restaurants"
           fontSize="l"
-          shape="superellipse"
-          onClick={() => onShowCart(true)} />  
+          className="fullSize" />
+      </NavLink>
+      <NavLink
+        to="/cart"
+        className={({ isActive }) =>
+          classNames(styles.tab, { [styles.activeTab]: isActive })
+        }>
+        <Button title="Cart" fontSize="l" className="fullSize" />
+      </NavLink>
     </header>
   );
 };

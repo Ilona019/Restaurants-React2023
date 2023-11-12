@@ -1,19 +1,16 @@
 import { ReviewForm } from "./component";
-import { useMakeRequest } from "../../hooks/use-make-request";
-import { createReview } from "../../redux/entities/review/thunks/create-review";
-import { LOADING_STATUS } from "../../constants/loading-statuses";
+import { useCreateReviewMutation } from "../../redux/services/api";
 
 export const ReviewFormContainer = ({ restaurantId }) => {
-  const [saveReviewStatus, saveReview] = useMakeRequest(createReview);
+  const [createReview, { isLoading }] = useCreateReviewMutation();
 
-  if (saveReviewStatus === LOADING_STATUS.loading) {
-    return <h3>Sending</h3>;
+  if (isLoading) {
+    return <h3>Sending...</h3>;
   }
 
   return (
     <ReviewForm
-      onSubmit={(form) =>
-        saveReview({ restaurantId, newReview: form })
-      }/>
+      onSubmit={(form) => createReview({ restaurantId, newReview: form })}
+    />
   );
 };

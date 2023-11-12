@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Cart } from "./component";
-import { selectCartDishIds } from "../../redux/ui/cart/selectors";
+import { selectCartDishes } from "../../redux/ui/cart/selectors";
 
 export const CartContainer = () => {
-  const dishIds = useSelector(selectCartDishIds);
+  const dishes = useSelector(selectCartDishes);
 
-  return <Cart dishIds={dishIds} />;
+  return <Cart dishes={dishes} />;
 };
