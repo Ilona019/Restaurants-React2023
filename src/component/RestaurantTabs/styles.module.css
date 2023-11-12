@@ -1,6 +1,16 @@
 .root {
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.activeTab {
+    background-color: #bdea9d;
+}
+
+.tab {
+    flex:  1 0;
+    text-align: center;
 }

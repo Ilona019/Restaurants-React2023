@@ -13,7 +13,7 @@ export const Layout = ({ restaurants, activeRestaurant, setActiveTab,  showCart,
         activeRestaurant={activeRestaurant}
         onTabSelect={setActiveTab}
         onShowCart={showCart} />
-      <main>{children}</main>
+      <main className={ styles.mainArea }>{children}</main>
       <Footer className={styles.footer} />
       </div>
       <div id="modal-container" className={styles.modalContainer}></div>
